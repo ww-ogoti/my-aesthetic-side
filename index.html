@@ -3,39 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Aesthetic Space</title>
+<title>Aesthetic Space</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  background: #0b0b0b;
-  color: white;
   font-family: 'Inter', sans-serif;
+  color: white;
 }
 
-/* HEADER */
-header {
-  text-align: center;
-  padding: 50px 20px 20px;
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 100;
 }
 
-header h1 {
-  font-size: 40px;
-  letter-spacing: 3px;
-}
-
-header p {
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
   opacity: 0.7;
-  margin-top: 10px;
 }
 
-/* GRID (Pinterest style) */
+nav a:hover {
+  opacity: 1;
+}
+
+/* SECTIONS */
+section {
+  min-height: 100vh;
+  padding: 80px 20px 40px;
+  transition: background 1s ease;
+}
+
+/* THEMES */
+#home {
+  background: #0b0b0b;
+}
+
+#outfits {
+  background: #111827;
+}
+
+#moodboards {
+  background: #1f1f1f;
+}
+
+#inspo {
+  background: #0f172a;
+}
+
+/* GRID */
 .grid {
   column-count: 3;
   column-gap: 12px;
-  padding: 20px;
 }
 
 .grid img {
@@ -43,43 +78,52 @@ header p {
   margin-bottom: 12px;
   border-radius: 12px;
   transition: 0.3s;
-  cursor: pointer;
 }
 
 .grid img:hover {
   transform: scale(1.02);
   opacity: 0.85;
 }
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  font-size: 12px;
-  opacity: 0.5;
-}
 </style>
 </head>
 
 <body>
 
-<header>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#outfits">Outfits</a>
+  <a href="#moodboards">Moodboards</a>
+  <a href="#inspo">Inspo</a>
+</nav>
+
+<section id="home">
   <h1>MY AESTHETIC SPACE</h1>
-  <p>Outfits • Aesthetics • Moodboards ✨</p>
-</header>
+  <p>Scroll through curated visuals ✨</p>
+</section>
 
-<div class="grid">
-  <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
-  <img src="https://images.unsplash.com/photo-1520975958225-6bcd6e5f4b39">
-  <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f">
-  <img src="https://images.unsplash.com/photo-1520975869015-9b9d7a6c8d6c">
-  <img src="https://images.unsplash.com/photo-1520975693410-001">
-  <img src="https://images.unsplash.com/photo-1520975742345-002">
-</div>
+<section id="outfits">
+  <h2>Outfits</h2>
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1520975869015-6c7f0c3f0a8d">
+    <img src="https://images.unsplash.com/photo-1520975693410-8c0f0f1b1c11">
+  </div>
+</section>
 
-<footer>
-  curated inspiration • some content remixed from creators
-</footer>
+<section id="moodboards">
+  <h2>Moodboards</h2>
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1520975742345-9f1c2a3d4b88">
+    <img src="https://images.unsplash.com/photo-1520975958225-2f4c7d8a1b66">
+  </div>
+</section>
+
+<section id="inspo">
+  <h2>Inspo</h2>
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1520976037612-1a2b3c4d5e77">
+    <img src="https://images.unsplash.com/photo-1520976101234-7f8a9b1c2d33">
+  </div>
+</section>
 
 </body>
 </html>
