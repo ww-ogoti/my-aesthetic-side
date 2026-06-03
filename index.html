@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aesthetic Space</title>
+<title>Aesthetic Feed</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -14,60 +14,40 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: white;
   background: #0b0b0b;
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  padding: 15px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  z-index: 100;
-}
-
-nav a {
   color: white;
-  text-decoration: none;
-  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+header h1 {
+  font-size: 42px;
+  letter-spacing: 3px;
+}
+
+header p {
   opacity: 0.7;
 }
 
-nav a:hover {
-  opacity: 1;
-}
-
-/* SECTIONS */
-section {
-  min-height: 100vh;
-  padding: 90px 20px 50px;
-  transition: background 0.8s ease;
-}
-
-/* THEMES */
-#home { background: #0b0b0b; }
-#outfits { background: #111827; }
-#pinterest { background: #0f172a; }
-#inspo { background: #1f1f1f; }
-
-/* GRID */
+/* MASONRY GRID */
 .grid {
   column-count: 3;
   column-gap: 12px;
+  padding: 20px;
 }
 
+/* images */
 .grid img {
   width: 100%;
   margin-bottom: 12px;
-  border-radius: 12px;
+  border-radius: 14px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .grid img:hover {
@@ -75,74 +55,62 @@ section {
   opacity: 0.85;
 }
 
-/* PINTEREST EMBED CONTAINER */
-.pinterest-box {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-/* smooth fade */
-section {
-  animation: fade 0.8s ease;
-}
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* loading text */
+#loading {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.6;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="#home">Home</a>
-  <a href="#outfits">Outfits</a>
-  <a href="#pinterest">Pinterest</a>
-  <a href="#inspo">Inspo</a>
-</nav>
+<header>
+  <h1>AESTHETIC FEED</h1>
+  <p>Endless Pinterest-style inspiration ✨</p>
+</header>
 
-<!-- HOME -->
-<section id="home">
-  <h1>MY AESTHETIC SPACE</h1>
-  <p>Scroll through curated visuals ✨</p>
-</section>
+<div class="grid" id="grid"></div>
 
-<!-- OUTFITS -->
-<section id="outfits">
-  <h2>Outfits</h2>
-  <div class="grid">
-    <img src="https://images.unsplash.com/photo-1520975869015-6c7f0c3f0a8d">
-    <img src="https://images.unsplash.com/photo-1520975693410-8c0f0f1b1c11">
-  </div>
-</section>
+<div id="loading">loading more vibes...</div>
 
-<!-- PINTEREST SECTION -->
-<section id="pinterest">
-  <h2>Pinterest Board</h2>
+<script>
+// 🔥 IMAGE POOL (you can add your Pinterest images here later)
+const images = [
+  "https://images.unsplash.com/photo-1520975869015-6c7f0c3f0a8d",
+  "https://images.unsplash.com/photo-1520975693410-8c0f0f1b1c11",
+  "https://images.unsplash.com/photo-1520975742345-9f1c2a3d4b88",
+  "https://images.unsplash.com/photo-1520975958225-2f4c7d8a1b66",
+  "https://images.unsplash.com/photo-1520976037612-1a2b3c4d5e77",
+  "https://images.unsplash.com/photo-1520976101234-7f8a9b1c2d33"
+];
 
-  <div class="pinterest-box">
-    <!-- Replace THIS link with your Pinterest board -->
-    <a data-pin-do="embedBoard"
-       data-pin-board-width="500"
-       data-pin-scale-height="300"
-       data-pin-scale-width="80"
-      href="https://www.pinterest.com/yourusername/outfits"
-    </a>
-  </div>
+const grid = document.getElementById("grid");
+const loading = document.getElementById("loading");
 
-  <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
-</section>
+let index = 0;
 
-<!-- INSPO -->
-<section id="inspo">
-  <h2>Inspo</h2>
-  <div class="grid">
-    <img src="https://images.unsplash.com/photo-1520976037612-1a2b3c4d5e77">
-    <img src="https://images.unsplash.com/photo-1520976101234-7f8a9b1c2d33">
-  </div>
-</section>
+// function to add images
+function loadImages(count = 6) {
+  for (let i = 0; i < count; i++) {
+    const img = document.createElement("img");
+    img.src = images[index % images.length];
+    grid.appendChild(img);
+    index++;
+  }
+}
+
+// initial load
+loadImages();
+
+// infinite scroll
+window.addEventListener("scroll", () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+    loadImages(6);
+  }
+});
+</script>
 
 </body>
 </html>
