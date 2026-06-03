@@ -16,6 +16,7 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   color: white;
+  background: #0b0b0b;
 }
 
 /* NAV */
@@ -25,7 +26,7 @@ nav {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   padding: 15px;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
@@ -35,7 +36,7 @@ nav {
 nav a {
   color: white;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   opacity: 0.7;
 }
 
@@ -46,26 +47,15 @@ nav a:hover {
 /* SECTIONS */
 section {
   min-height: 100vh;
-  padding: 80px 20px 40px;
-  transition: background 1s ease;
+  padding: 90px 20px 50px;
+  transition: background 0.8s ease;
 }
 
 /* THEMES */
-#home {
-  background: #0b0b0b;
-}
-
-#outfits {
-  background: #111827;
-}
-
-#moodboards {
-  background: #1f1f1f;
-}
-
-#inspo {
-  background: #0f172a;
-}
+#home { background: #0b0b0b; }
+#outfits { background: #111827; }
+#pinterest { background: #0f172a; }
+#inspo { background: #1f1f1f; }
 
 /* GRID */
 .grid {
@@ -84,6 +74,23 @@ section {
   transform: scale(1.02);
   opacity: 0.85;
 }
+
+/* PINTEREST EMBED CONTAINER */
+.pinterest-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* smooth fade */
+section {
+  animation: fade 0.8s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 
@@ -92,15 +99,17 @@ section {
 <nav>
   <a href="#home">Home</a>
   <a href="#outfits">Outfits</a>
-  <a href="#moodboards">Moodboards</a>
+  <a href="#pinterest">Pinterest</a>
   <a href="#inspo">Inspo</a>
 </nav>
 
+<!-- HOME -->
 <section id="home">
   <h1>MY AESTHETIC SPACE</h1>
   <p>Scroll through curated visuals ✨</p>
 </section>
 
+<!-- OUTFITS -->
 <section id="outfits">
   <h2>Outfits</h2>
   <div class="grid">
@@ -109,14 +118,24 @@ section {
   </div>
 </section>
 
-<section id="moodboards">
-  <h2>Moodboards</h2>
-  <div class="grid">
-    <img src="https://images.unsplash.com/photo-1520975742345-9f1c2a3d4b88">
-    <img src="https://images.unsplash.com/photo-1520975958225-2f4c7d8a1b66">
+<!-- PINTEREST SECTION -->
+<section id="pinterest">
+  <h2>Pinterest Board</h2>
+
+  <div class="pinterest-box">
+    <!-- Replace THIS link with your Pinterest board -->
+    <a data-pin-do="embedBoard"
+       data-pin-board-width="500"
+       data-pin-scale-height="300"
+       data-pin-scale-width="80"
+      href="https://www.pinterest.com/yourusername/outfits"
+    </a>
   </div>
+
+  <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
 </section>
 
+<!-- INSPO -->
 <section id="inspo">
   <h2>Inspo</h2>
   <div class="grid">
